@@ -1,4 +1,4 @@
-***Replicate parts of the Account record view using standard Contoller***
+***Replicate parts of the Account record view using standard Controller***
 
 <apex:page standardController="Account" sidebar="false">
     <apex:form >
