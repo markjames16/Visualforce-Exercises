@@ -1,0 +1,22 @@
+***Replicate parts of the Account record view using standard Contoller***
+
+<apex:page standardController="Account" sidebar="false">
+    <apex:form >
+        <apex:pageblock >
+          <apex:pageBlockButtons location="bottom">
+           <apex:commandButton value="Save" title="Click to save" action="{!save}"/>
+           <apex:commandButton value="Cancel" title="Click to save" action="{!cancel}"/>
+          </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account Information">
+                <apex:inputField value="{!account.Name}"/>
+                <apex:inputField value="{!account.Type}"/>
+                <apex:inputField value="{!account.Industry}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Other Information">
+                <apex:inputField value="{!account.Rating}"/>
+                <apex:inputField value="{!account.Website}"/>
+                <apex:inputField value="{!account.Phone}"/>
+            </apex:pageBlockSection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>
