@@ -1,0 +1,43 @@
+Create VF Page & custom controller Account Search.
+When you input Account name on search box it will show list of accounts
+
+***VF***
+<apex:page controller="SearchAndEditController" sidebar="false">
+  <apex:form >
+    <apex:pageBlock title="Search Criteria">
+      <apex:pageBlockSection >
+        <apex:pageBlockSectionItem >
+          <apex:outputLabel value="Account Name" for="accountId"></apex:outputLabel>
+         <apex:inputText id="accountId" value="{!name}"/>
+        </apex:pageBlockSectionItem>
+        <apex:commandButton value="Search" action="{!executeSearch}"/>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:pageBlock title="Searched Accounts" rendered="{!searched}" >
+      <apex:pageBlockTable value="{!accounts}" var="acc">
+        <apex:column value="{!acc.Name}"/>
+        <apex:column value="{!acc.Type}"/>
+        <apex:column value="{!acc.Industry}"/>
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>
+
+
+
+***Controller***
+public class SearchAndEditController {
+    public String name{get;set;}
+    public boolean searched{get;set;}
+    public list <Account> accounts{get;set;}
+    public SearchAndEditController() {
+      searched = false;
+    }
+    
+    public pagereference executeSearch() {
+     searched = true;
+     String searchName = '%'+name+'%';
+     accounts = [SELECT Id,Name,Type, Industry FROM Account WHERE Name LIKE :searchName];
+     return null;
+    }
+}
