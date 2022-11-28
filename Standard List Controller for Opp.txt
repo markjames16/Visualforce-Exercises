@@ -1,0 +1,26 @@
+Create a list page of Opp that can be inline edited and saved
+
+
+***VF***
+<apex:page standardController="Opportunity" recordSetVar="Opportunities" sidebar="false">
+  <apex:slds >
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageblockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Previous" action="{!previous}"/>
+                <apex:commandButton value="Next" action="{!Next}"/>
+            </apex:pageblockButtons>
+            <apex:pageblockTable value="{!Opportunities}" var="opp">
+                <apex:column value="{!opp.name}"/>
+                <apex:column headerValue="Stage Name">
+                    <apex:inputField value="{!opp.StageName}"/>
+                </apex:column>
+                 <apex:column headerValue="Close Date">
+                    <apex:inputField value="{!opp.closeDate}"/>
+                </apex:column>
+            </apex:pageblockTable>
+        </apex:pageblock>
+    </apex:form>
+  </apex:slds>
+</apex:page>
